@@ -1,0 +1,23 @@
+import qrcode
+
+def generate_qr(data: str, filename: str = "qrcode.png"):
+    """Generate a QR code from the given data and save it as an image."""
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill_color="black", back_color="white")
+    img.save(filename)
+    print(f"✅ QR code saved as '{filename}'")
+
+
+if __name__ == "__main__":
+    print("🔳 QR Code Generator — Hacktoberfest 2025")
+    text = input("Enter text or URL to generate QR code: ").strip()
+    file_name = input("Enter output filename (e.g., myqr.png): ").strip() or "qrcode.png"
+    generate_qr(text, file_name)
