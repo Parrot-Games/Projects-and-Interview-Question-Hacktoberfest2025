@@ -1,0 +1,24 @@
+import os
+import shutil
+
+def sort_files(folder_path: str):
+    """Sort files in the given folder into subfolders by extension."""
+    if not os.path.exists(folder_path):
+        print("❌ Folder does not exist.")
+        return
+
+    for file_name in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, file_name)
+        if os.path.isfile(file_path):
+            ext = file_name.split('.')[-1] if '.' in file_name else 'others'
+            dest_folder = os.path.join(folder_path, ext.upper())
+            os.makedirs(dest_folder, exist_ok=True)
+            shutil.move(file_path, os.path.join(dest_folder, file_name))
+
+    print("✅ Files have been sorted successfully!")
+
+
+if __name__ == "__main__":
+    print("📂 File Sorter — Hacktoberfest 2025")
+    folder = input("Enter folder path to sort files: ").strip()
+    sort_files(folder)
