@@ -1,0 +1,16 @@
+import random
+
+quotes = [
+    "Believe in yourself! 💪",
+    "Every day is a second chance. 🌅",
+    "You are stronger than you think. 🔥",
+    "Dream big and dare to fail. 🚀",
+    "Success is the sum of small efforts repeated daily. 📈",
+    "Keep pushing forward. ⚡",
+    "Don’t stop until you’re proud. 🌟",
+    "Mistakes are proof that you are trying. 🧠"
+]
+
+if __name__ == "__main__":
+    print("✨ Daily Motivation Generator — Hacktoberfest 2025 ✨\n")
+    print(random.choice(quotes))
