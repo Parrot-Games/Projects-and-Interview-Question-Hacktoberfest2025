@@ -1,0 +1,26 @@
+import os
+import shutil
+
+def organize_files(folder_path: str):
+    """Organize files in the given folder by file extension."""
+    if not os.path.exists(folder_path):
+        print("❌ Folder does not exist.")
+        return
+
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename)
+
+        if os.path.isfile(file_path):
+            file_ext = filename.split('.')[-1].lower() if '.' in filename else 'unknown'
+            folder_name = os.path.join(folder_path, file_ext.upper())
+
+            os.makedirs(folder_name, exist_ok=True)
+            shutil.move(file_path, os.path.join(folder_name, filename))
+
+    print("✅ Files organized successfully!")
+
+
+if __name__ == "__main__":
+    print("📂 File Organizer — Hacktoberfest 2025")
+    path = input("Enter the folder path to organize: ").strip()
+    organize_files(path)
